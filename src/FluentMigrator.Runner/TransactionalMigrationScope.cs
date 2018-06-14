@@ -25,7 +25,8 @@ namespace FluentMigrator.Runner
         public TransactionalMigrationScope(IMigrationProcessor migrationProcessor, Action disposalAction)
             : base(disposalAction)
         {
-            _migrationProcessor = migrationProcessor ?? throw new ArgumentNullException(nameof(migrationProcessor));
+            if (migrationProcessor == null ) throw new ArgumentNullException(nameof(migrationProcessor));
+            _migrationProcessor = migrationProcessor;
             _migrationProcessor.BeginTransaction();
         }
 

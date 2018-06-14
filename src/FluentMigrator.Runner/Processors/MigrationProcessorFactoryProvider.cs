@@ -22,17 +22,17 @@ using System.Reflection;
 using FluentMigrator.Infrastructure;
 using FluentMigrator.Runner.Extensions;
 using FluentMigrator.Runner.Infrastructure;
-using FluentMigrator.Runner.Processors.DB2;
-using FluentMigrator.Runner.Processors.DotConnectOracle;
-using FluentMigrator.Runner.Processors.Firebird;
-using FluentMigrator.Runner.Processors.Hana;
-using FluentMigrator.Runner.Processors.MySql;
-using FluentMigrator.Runner.Processors.Oracle;
-using FluentMigrator.Runner.Processors.Postgres;
-using FluentMigrator.Runner.Processors.Redshift;
-using FluentMigrator.Runner.Processors.SqlAnywhere;
-using FluentMigrator.Runner.Processors.SqlServer;
-using FluentMigrator.Runner.Processors.SQLite;
+//using FluentMigrator.Runner.Processors.DB2;
+//using FluentMigrator.Runner.Processors.DotConnectOracle;
+//using FluentMigrator.Runner.Processors.Firebird;
+//using FluentMigrator.Runner.Processors.Hana;
+//using FluentMigrator.Runner.Processors.MySql;
+//using FluentMigrator.Runner.Processors.Oracle;
+//using FluentMigrator.Runner.Processors.Postgres;
+//using FluentMigrator.Runner.Processors.Redshift;
+//using FluentMigrator.Runner.Processors.SqlAnywhere;
+//using FluentMigrator.Runner.Processors.SqlServer;
+//using FluentMigrator.Runner.Processors.SQLite;
 
 namespace FluentMigrator.Runner.Processors
 {
@@ -48,29 +48,30 @@ namespace FluentMigrator.Runner.Processors
             // but this fails if we don't have any reference. Adding the package
             // isn't enough. We MUST have a reference to a type, otherwise the
             // assembly reference gets removed by the C# compiler!
-            Register(new Db2ProcessorFactory());
-            Register(new DotConnectOracleProcessorFactory());
-            Register(new FirebirdProcessorFactory());
-            Register(new MySql4ProcessorFactory());
-            Register(new MySql5ProcessorFactory());
-            Register(new OracleManagedProcessorFactory());
-            Register(new OracleProcessorFactory());
-            Register(new PostgresProcessorFactory());
-            Register(new SQLiteProcessorFactory());
-            Register(new SqlServer2000ProcessorFactory());
-            Register(new SqlServer2005ProcessorFactory());
-            Register(new SqlServer2008ProcessorFactory());
-            Register(new SqlServer2012ProcessorFactory());
-            Register(new SqlServer2014ProcessorFactory());
-            Register(new SqlServer2016ProcessorFactory());
-            Register(new SqlServerProcessorFactory());
-            Register(new SqlServerCeProcessorFactory());
-            Register(new SqlAnywhere16ProcessorFactory());
-            Register(new HanaProcessorFactory());
-            Register(new RedshiftProcessorFactory());
+
+            //Register(new Db2ProcessorFactory());
+            //Register(new DotConnectOracleProcessorFactory());
+            //Register(new FirebirdProcessorFactory());
+            //Register(new MySql4ProcessorFactory());
+            //Register(new MySql5ProcessorFactory());
+            //Register(new OracleManagedProcessorFactory());
+            //Register(new OracleProcessorFactory());
+            //Register(new PostgresProcessorFactory());
+            //Register(new SQLiteProcessorFactory());
+            //Register(new SqlServer2000ProcessorFactory());
+            //Register(new SqlServer2005ProcessorFactory());
+            //Register(new SqlServer2008ProcessorFactory());
+            //Register(new SqlServer2012ProcessorFactory());
+            //Register(new SqlServer2014ProcessorFactory());
+            //Register(new SqlServer2016ProcessorFactory());
+            //Register(new SqlServerProcessorFactory());
+            //Register(new SqlServerCeProcessorFactory());
+            //Register(new SqlAnywhere16ProcessorFactory());
+            //Register(new HanaProcessorFactory());
+            //Register(new RedshiftProcessorFactory());
 
 #if NETFRAMEWORK
-            Register(new Jet.JetProcessorFactory());
+            //Register(new Jet.JetProcessorFactory());
 #endif
         }
 
@@ -106,7 +107,8 @@ namespace FluentMigrator.Runner.Processors
 
         public virtual IMigrationProcessorFactory GetFactory(string name)
         {
-            if (MigrationProcessorFactories.TryGetValue(name, out var result))
+            IMigrationProcessorFactory result;
+            if (MigrationProcessorFactories.TryGetValue(name, out result))
                 return result;
             return null;
         }

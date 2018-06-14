@@ -69,11 +69,8 @@ namespace FluentMigrator.Runner.Infrastructure
 
         private static IMigrationInfo GetMigrationInfoForImpl(Type migrationType)
         {
-            IMigration CreateMigration()
-            {
-                return (IMigration) Activator.CreateInstance(migrationType);
-            }
-
+            var CreateMigration = new Func<IMigration>(() => (IMigration)Activator.CreateInstance(migrationType));
+            
             var migrationAttribute = migrationType.GetOneAttribute<MigrationAttribute>();
             var migrationInfo = new MigrationInfo(migrationAttribute.Version, migrationAttribute.Description, migrationAttribute.TransactionBehavior, migrationAttribute.BreakingChange, CreateMigration);
 

@@ -74,7 +74,7 @@ namespace FluentMigrator.Runner
         }
 
         public MigrationRunner(Assembly assembly, IRunnerContext runnerContext, IMigrationProcessor processor, IConventionSet conventionSet)
-            : this(new SingleAssembly(assembly), runnerContext, processor, versionTableMetaData: null, migrationRunnerConventions: null, conventionSet)
+            : this(new SingleAssembly(assembly), runnerContext, processor, versionTableMetaData: null, migrationRunnerConventions: null, conventionSet: conventionSet)
         {
         }
 
